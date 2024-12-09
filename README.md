@@ -274,3 +274,18 @@ IntelliJ --> New Project --> Java --> IntelliJ Project
 
 Primitive types: reside on stack
 reference types: reside on heap are
+
+===============
+
+constructors:
+1) used to initailze objects
+2) can be overloaded: can have different ways to initialize
+3) they look like methods  having same name as that of class
+4) they implitily returns the created object
+5) can't be void
+6) compiler creates default constructor if no constructors are written
+
+I need to keep track of how many instances of Account is created
+static : class data
+instance: object data
+
