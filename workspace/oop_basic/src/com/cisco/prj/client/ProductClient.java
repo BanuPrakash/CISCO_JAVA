@@ -15,6 +15,7 @@ public class ProductClient {
         products[2] = new Tv(51, "Onida", 4200.00, "CRT");
         products[3] = new Mobile(90, "MotoG", 8900, "5G");
         products[4] = new Mobile(81, "Oppo", 21000,"5G");
+        //products[5] = new Product(); // not possible; cannot be instantiated
         printExpensiveProducts(products);
        // printDetails(products);
         printDetailsOCP(products);

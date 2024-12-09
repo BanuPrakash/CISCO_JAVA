@@ -1,7 +1,8 @@
 package com.cisco.prj.entity;
 
 // implicitly inherits from java.lang.Object
-public class Product {
+// remember Liskov Substitution Principle
+public abstract class Product {
     private  int id;
     private String name;
     private double price;
@@ -40,7 +41,10 @@ public class Product {
     }
 
     // default implementation
-    public boolean isExpensive() {
-        return  false;
-    }
+//    public boolean isExpensive() {
+//        return  false;
+//    }
+
+    // like pure virtual function
+    public abstract boolean isExpensive();
 }

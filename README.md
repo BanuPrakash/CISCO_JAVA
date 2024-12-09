@@ -368,6 +368,23 @@ p instanceof Tv ==> false
 
 p.getClass() ===> Mobile.class
 
+====================================
+
+abstract class and abstract methods:
+abstract class: classes which are meant only for generalization; objects of such classes doesn't exist in real world
+Examples: Product, Account,..
+cannot be instantiated
+
+abstract methods: pure virtual functions; no method body;
+all inherited classes need to implement them or mark the inherited class also as abstract
+
+Rule:
+* if one of the method is abstract then class has to be declared abstract
+
+* abstract class need not have abstract methods
+====
+
+
 
 
 

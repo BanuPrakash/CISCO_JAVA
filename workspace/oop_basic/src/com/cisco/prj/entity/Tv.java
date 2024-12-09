@@ -19,5 +19,11 @@ public class Tv extends  Product{
         this.screenType = screenType;
     }
 
-    // not overriding inherited isExpensive method
+
+    @Override
+    public boolean isExpensive() {
+        // proper logic
+        return false;
+    }
+
 }
