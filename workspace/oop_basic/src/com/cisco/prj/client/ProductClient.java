@@ -4,6 +4,8 @@ import com.cisco.prj.entity.Mobile;
 import com.cisco.prj.entity.Product;
 import com.cisco.prj.entity.Tv;
 
+import java.lang.reflect.Method;
+
 public class ProductClient {
     public static void main(String[] args) {
         Product[] products = new Product[5]; // array of pointers
@@ -14,9 +16,34 @@ public class ProductClient {
         products[3] = new Mobile(90, "MotoG", 8900, "5G");
         products[4] = new Mobile(81, "Oppo", 21000,"5G");
         printExpensiveProducts(products);
-        printDetails(products);
+       // printDetails(products);
+        printDetailsOCP(products);
     }
 
+    // OCP; closed for change and open for extension
+    private static void printDetailsOCP(Product[] products) {
+        // enhanced for each loop
+        for(Product p: products) {
+            // get methods of class + inherited methods
+            Method[] methods = p.getClass().getMethods();
+            for(Method m : methods) {
+                if(m.getName().startsWith("get")) {
+                    try {
+                        Object ret = m.invoke(p);
+                        System.out.println(m.getName()
+                                .substring(3).toUpperCase() + " : "  + ret);
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+            }
+            System.out.println("*********");
+        }
+    }
+
+    // is this OCP?
     private static void printDetails(Product[] products) {
         // enhanced for each loop
         for(Product p: products) {
@@ -44,7 +71,6 @@ public class ProductClient {
                 System.out.println(products[i].getName() + " is expensive!!!");
             } else {
                 System.out.println(products[i].getName() + " is not expensive!!!");
-
             }
         }
     }
