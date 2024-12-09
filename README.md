@@ -186,7 +186,82 @@ tv.on();
 tv.changeChannel(454);
 rahulAcc.deposit(5000); ==> deposit(rahulAcc, 5000);
 ```
-========
+============
+
+Logically group objects/classes in building enterprise application
+* Entity / model / domain classes
+they are used to represent the state which is long lived; beyoud the life of application
+they are associated with persistent store like database / file ...
+Most of the time one class per table in database.
+
+Example: Uber application
+Customer, Driver, Vehicle, Trip, Payment, ...
+
+Example : Amazon
+Customer, Product, Supplier, Order, LineItems, ...
+
+Generally these classes won't have any business logic.
+they contain constructors, getters, setters, hashCode, equals, toString method
+
+https://datamodels.databases.biz/
+
+* DAO / DAL classes: Data Access Object
+They contain CRUD operations
+CREATE READ UPDATE DELETE
+
+* Business : business logic
+
+* Service : facade over business and DAO layer
+generally they contain transactional code; making coarse grained layer
+
+```
+// one call from client / UI
+public void transferFunds(Account fromAcc, Account toAcc, double amt) {
+    BEGIN Tx
+    // check eligibility --> business layer
+    // check balance --> call to DAO layer
+    // update fromAcc --> call to DAO layer
+    // insert into Tx table --> call to DAO layer
+    // send SMS 
+    COMMIT Tx
+}
+
+``
+* UI : user interface / client code
+
+* Exception classes
+an object which tells
+1) What went wrong?
+2) Why?
+3) Where?
+
+* Utility : helper classes
+
+package: in java it's a folder for logically grouping of classes
+
+```
+com
+    cisco
+        <<prj>>
+            entity
+                Customer.java
+                Order.java
+                ...
+            dao [one per table]
+                CustomerDao.java
+                OrderDao.java
+                ...
+            service [one per actor]
+                AdminService.java
+                CustomerService.java
+            utility
+                ..
+            exception
+                ...
+            business
+                ...
+```
+
 
 
 
