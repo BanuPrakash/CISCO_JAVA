@@ -44,9 +44,4 @@ public class Account {
                 "balance=" + balance +
                 '}';
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(balance);
-    }
 }
