@@ -308,3 +308,26 @@ important methods of Object class:
 equals, hashCode, toString, getClass,   wait, notify, notifyAll
 
 entity classes should override equals, hashCode, toString [ used only in development env]
+
+===================================
+
+Relationship between objects / classes
+
+* Generalization and Specialization [ IS A]
+* Association [ HAS A]
+* Realization
+* Uses A 
+
+Java Build tools:
+* Maven
+* checkstyle: Coding conventions
+* PMD / findBugs: Coding Stds
+* SonarQube
+* Jenkins [ CI / CD]
+
+PMD / findBugs / SonarQube: --> Copy & Paste Code
+
+https://www.youtube.com/watch?v=hXkzfLaps8s
+
+=======================================
+
