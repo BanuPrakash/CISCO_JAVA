@@ -313,7 +313,7 @@ entity classes should override equals, hashCode, toString [ used only in develop
 
 Relationship between objects / classes
 
-* Generalization and Specialization [ IS A]
+* Generalization and Specialization [ IS A] 
 * Association [ HAS A]
 * Realization
 * Uses A 
@@ -329,5 +329,21 @@ PMD / findBugs / SonarQube: --> Copy & Paste Code
 
 https://www.youtube.com/watch?v=hXkzfLaps8s
 
-=======================================
+=========================================
+
+* Generalization and Specialization [ IS A] 
+--> Inheritance
+--> extends is the keyword in Java
+--> every object is inherited from java.lang.Object [implicit]
+public class Account
+translates to:
+public class Account extends Object
+--> java doesn't support multiple inheritance
+public class A extends B, C { // not valid
+
+====
+
+
+
+
 
