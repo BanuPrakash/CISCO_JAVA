@@ -343,6 +343,32 @@ public class A extends B, C { // not valid
 
 ====
 
+In Java all instance methods internally are virtual functions; all instance methods are dynamic binding
+
+```
+Mobile[] mobiles = new Mobile[100];
+...
+for(i = 0; i < mobiles.length; i++) {
+
+}
+Tv[] tvs = new Tv[1000];
+for(i = 0; i < tv.length; i++) {
+    
+}
+
+```
+
+Product p = new Mobile();
+instanceof --> family of
+
+p instanceof Mobile ===> evaluate to true
+p instanceof Product ==> true
+p instanceof Object ==> true
+p instanceof Tv ==> false
+
+p.getClass() ===> Mobile.class
+
+
 
 
 
