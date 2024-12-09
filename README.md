@@ -226,7 +226,7 @@ public void transferFunds(Account fromAcc, Account toAcc, double amt) {
     COMMIT Tx
 }
 
-``
+```
 * UI : user interface / client code
 
 * Exception classes
@@ -239,10 +239,11 @@ an object which tells
 
 package: in java it's a folder for logically grouping of classes
 
+
 ```
 com
     cisco
-        <<prj>>
+        prj
             entity
                 Customer.java
                 Order.java
