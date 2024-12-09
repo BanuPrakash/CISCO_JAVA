@@ -179,13 +179,14 @@ int to 0; double to 0.0; objects to null ; character to null character; boolean 
 
 No concept of garbage or junk value in heap area
 
-
+```
 context.behaviour(arguments);
 fan.on();
 tv.on();
 tv.changeChannel(454);
 rahulAcc.deposit(5000); ==> deposit(rahulAcc, 5000);
-
+```
 ========
+
 
 
