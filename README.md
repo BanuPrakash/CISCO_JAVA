@@ -238,7 +238,12 @@ an object which tells
 * Utility : helper classes
 
 package: in java it's a folder for logically grouping of classes
+they also help in class namespace identification
 
+Date d; // ??
+
+java.util.Date d1 ...
+java.sql.Date d2 ...
 
 ```
 com
@@ -264,5 +269,8 @@ com
 ```
 
 
+IntelliJ --> New Project --> Java --> IntelliJ Project
 
 
+Primitive types: reside on stack
+reference types: reside on heap are
