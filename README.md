@@ -289,3 +289,22 @@ I need to keep track of how many instances of Account is created
 static : class data
 instance: object data
 
+rahulAcc.getBalance(); ===> getBalance(rahulAcc); // internally rahulAcc -> this pointer
+
+Account.getCount(); ==> getCount(); // no explict passing of this pointer; hence static methods can't access state
+
+rahulAcc.getCount(); ==> Account.getCount(); 
+
+---
+
+local variables --> stack
+instance variables --> heap
+static variables --> metaspace / earlier it was called as method area
+
+=================================================
+
+Every class inherits from java.lang.Object class
+important methods of Object class:
+equals, hashCode, toString, getClass,   wait, notify, notifyAll
+
+entity classes should override equals, hashCode, toString [ used only in development env]

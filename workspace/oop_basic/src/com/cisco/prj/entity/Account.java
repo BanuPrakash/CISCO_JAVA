@@ -1,8 +1,10 @@
 package com.cisco.prj.entity;
 
+import java.util.Objects;
+
 public class Account {
     private double balance; // state, initialized to 0.0
-    private static int count;
+    private static int count; // class data
 
     // default constructor
     public Account() {
@@ -25,5 +27,26 @@ public class Account {
     // class member; context has to be class
     public static int getCount() {
         return  count;
+    }
+
+    // a1.equals(a2)
+    // this --> a1
+    // other --> a2
+    @Override
+    public boolean equals(Object other) {
+        Account account = (Account) other;
+        return this.balance == account.balance;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "balance=" + balance +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(balance);
     }
 }
