@@ -384,9 +384,83 @@ Rule:
 * abstract class need not have abstract methods
 ====
 
+Realization relationship
+* A component will realize the behaviour specified by other
+* program to contract
+* program to interface
+
+In java we do it using interface
+
+interface interfaceName {
+    abstract behaviour
+}
+
+===========
+// all methods in interface are by default public and abstract
+
+```
+interface EmployeeDao {
+    void addEmployee(Employee e);
+    Employee getEmployee(int id);
+}
+
+implements ==> Realization
+
+public class EmployeeDaoDbImpl implements EmployeeDao {
+    public void addEmployee(Employee e) { insert  }
+    public Employee getEmployee(int id) { select }
+}
 
 
+UI code:
+
+click on add button
+
+employeeDao.addEmployee(e);
+
+employeeDao.getEmployee(34);
+
+```
+
+Why program to interface?
+1) DESIGN
+2) IMPLEMENTATION
+3) TESTING
+4) INTEGRATION
+5) LOOSE COUPLING
+
+Scenario 1:
+Switching between strategies
+MobileDao mobileDao = new MobileDaoDbImpl();
+OR
+MobileDao mobileDao = new MobileDaoMongoImpl();
+
+Issues: There are many heterogenous clients like Web, Mobile, Desktop, Tv ...
+Switching between strageties needs every client code to change.
+No abstraction; Why should client know about type of implementation
+No consistency; some will update to Mongo, other clients might still be use DB. ---> issue
+
+Solution : Use Factory Pattern
+Every client code :
+MobileDao mobileDao = MobileDaoFactory.getMobileDao();
+
+Zero changes in client
+
+Scenario 2:
+No code changes, even in Factory
+Solution: use Configuration files like XML / properties, ...
+for XML we need to learn SAX / DOM,
+properties file is a key/value pair
+MOBILE_DAO=com.cisco.prj.dao.MobileDaoDbImpl
 
 
+====
 
+Creating an Object:
+1) if we know class name 
+new Mobile()
 
+2) if class name is dynamic
+str = "com.cisco.prj.entity.Tv"
+
+Class.forName(str).newInstance();
