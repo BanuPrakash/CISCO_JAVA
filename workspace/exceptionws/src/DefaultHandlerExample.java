@@ -12,7 +12,7 @@ public class DefaultHandlerExample {
 //        });
         Thread.currentThread().setUncaughtExceptionHandler
                 ((t, e) -> System.err.println("Boom :-( " + e.getMessage()));
-        
+
         System.out.println("Main Called");
         doTask();
     }

@@ -15,5 +15,7 @@ public class CheckedTypeOfException {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+
     }
 }

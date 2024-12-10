@@ -543,7 +543,8 @@ Exception type of exceptions: can be handled, can have alternate flow
     Compiler doesn't enforce you to handle that
 
     Examples: ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException
-    ```
+
+```
     int data = 100;
         int no = 0;
         System.out.println(data / no); // ArithmeticException
@@ -608,9 +609,132 @@ In case of Checked type of exception; we need "throws" keyword to specify that e
 
 "throw" keyword --> pending
 
+===============================================
+
+Generic Types:
+
+```
+public class Rectangle {
+    private double width;
+    private double height;
+}
+
+Rectangle r1 = new Rectangle(4.5, 1.2);
+
+public class IRectangle {
+    private int width;
+    private int height;
+}
+
+IRectangle r2 = new IRectangle(4 , 12);
+
+Solution: 
+
+public class Rectangle<T> {
+    private T width;
+    private T height;
+}
+
+now width and height are of type "T" generic
+
+Rectangle<Double> r1 = new Rectangle<Double>( 4.1, 6.7);
+Rectangle<Integer> r2 = new Rectangle<Integer>( 2, 7);
+Rectangle<String> r3 = new Rectangle<String>( "A" , "B" );
+
+Integer, Double are TypeWraper classes for int and double
+Why?
+Generics is not applicaple for primitive types, can be used only for Objects
+
+int x = 10;
+Integer iX = x; // Boxing, primitive --> object
+...
+
+int y = iX; // unboxing, object --> primitive
+
+```
+
+Compiler erases the type definitions of generics, code gets converted to:
+
+```
+
+public class Rectangle<T> {
+    private T width;
+    private T height;
+}
+
+to
+
+public class Rectangle {
+    private Object width;
+    private Object height;
+}
+
+Example 2: Narrow the generic type
+
+public class Rectangle<T extends Number> {
+    private T width;
+    private T height;
+}
 
 
+to
 
+public class Rectangle {
+    private Number width;
+    private Number height;
+}
+
+Rectangle<Double> r1 = new Rectangle<Double>( 4.1, 6.7);
+Rectangle<Integer> r2 = new Rectangle<Integer>( 2, 7);
+Rectangle<String> r3 = new Rectangle<String>( "A" , "B" ); // error
+```
+
+Without Generic methods:
+
+```
+
+public interface IComparable {
+    int compare(Object other);
+}
+
+public class Circle implements IComparable {
+     @Override
+    public int compare(Object other) {
+        Circle c = (Circle) other;
+        return this.radius - c.radius;
+    }
+}
+
+public abstract class Product implements IComparable {
+ @Override
+    public int compare(Object other) {
+        Product p = (Product) other;
+        return (int) (this.price - p.price);
+    }
+}
+```
+
+Generic methods:
+
+```
+public interface IComparable<T> {
+    int compare(T other);
+}
+
+public class Circle implements IComparable<Circle> {
+    @Override
+    public int compare(Circle other) {
+        return this.radius - other.radius;
+    }
+}
+
+public abstract class Product implements IComparable<Product> {
+ @Override
+    public int compare(Product other) {
+        return (int) (this.price - other.price);
+    }
+}
+```
 
 
 
