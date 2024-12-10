@@ -736,6 +736,53 @@ public abstract class Product implements IComparable<Product> {
 }
 ```
 
+Java Collection Framework
+provides support for data containers / data structures to be used instead of arrays
+
+* Limitations of array container is
+1) size is fixed
+ Product[] products = new Product[5];
+
+2) can't grow / shrink
+
+3) Adding / removing from arbitrary position is difficult
+
+4) needs contiguos memory
+
+JCF provides:
+1) interfaces
+2) implementation classes
+3) Algorithm / utility classes
+
+Arrays: utility class which contains alg like sort, max, min, binarySearch, ... which can be used for array type of container containing any type of data [string, number, product,..]
+Arrays uses Comparable / Comparator for comparision
+
+```
+Use Comparable if the comparision logic is part of the object itself.
+public interface Comparable<T> {
+    public int compareTo(T o);
+}
+
+Terminal: ls
+Logic to display is provided by the File system of OS
+
+-rw-r--r--@ 1 banuprakash  staff  1063 Dec  9 12:29 Account.java
+-rw-r--r--@ 1 banuprakash  staff   510 Dec 10 09:55 Circle.java
+-rw-r--r--@ 1 banuprakash  staff  1046 Dec  9 14:18 Mobile.java
+-rw-r--r--@ 1 banuprakash  staff  1365 Dec 10 09:56 Product.java
+-rw-r--r--@ 1 banuprakash  staff   572 Dec  9 15:38 Tv.java
+
+Use Comparator if the comparision logic is provided by the client application / code.
+
+FileExplorer provided different ways of sorting --> comparision logic  is provided by FileExplorer
+@FunctionalInterface
+public interface Comparator<T> {
+     int compare(T o1, T o2);
+}
+```
+
+
+
 
 
 

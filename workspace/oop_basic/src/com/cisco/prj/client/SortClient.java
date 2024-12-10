@@ -6,6 +6,8 @@ import com.cisco.prj.entity.Product;
 import com.cisco.prj.entity.Tv;
 import com.cisco.prj.util.Utility;
 
+import java.util.Comparator;
+
 public class SortClient {
     public static void main(String[] args) {
         Product[] products = new Product[5]; // array of pointers
