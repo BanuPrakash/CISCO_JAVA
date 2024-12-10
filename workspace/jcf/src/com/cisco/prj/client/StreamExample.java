@@ -35,10 +35,11 @@ public class StreamExample {
 
         // get only the names of mobiles
         System.out.println("total cost of mobiles");
-        double total = products.stream()
+        //double total = products.stream()
+        double total = products.parallelStream()
                 .filter(p -> p.getCategory().equals("MOBILE"))
                 .map(m -> m.getPrice())
-                        .reduce(0.0, (p1,p2) -> p1 + p2);
+                .reduce(0.0, (p1,p2) -> p1 + p2);
 //                .reduce(0.0, (p1,p2) -> {
 //                    System.out.println(p1 + " , " + p2);
 //                    return    p1 + p2;
@@ -57,7 +58,7 @@ public class StreamExample {
                 .filter(p -> p.getCategory().equals("TV"))
                 .collect(Collectors.toList());
 
-        
+
 
     }
 }

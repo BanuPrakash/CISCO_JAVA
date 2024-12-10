@@ -863,6 +863,49 @@ we can use n number of Intermediary functions in the chain in any order
 
 Note: data flows thro stream only if we have terminal function;
 
+=============
+
+Set
+* unique collection
+* index based operation is not supported
+* re-order is not supported; can't sort/ shuffle / reverse
+* order of elements is decided based on type of set implementation
+Popular Set implementations:
+1) HashSet
+2) LinkedHashSet
+3) TreeSet
+
+
+Any hash based data containers uses hashCode() and equals() to identifying duplicates and ordering
+equals() will be called only when hashcode collides
+
+HashCode: Numerical value of an object
+* Similar objects should have same hashCode
+* objects which are not similar can also have same hashCode [ possibility]
+
+Object class internally uses address of object as hashCode --> not correct;
+equals works like == operator
+So we need to override these methods
+
+// Rarely used; avoid it; internally it's a RedBlack Tree
+TreeSet uses Comparable / Comparator for identifying duplicates and ordering
+
+instead we use a combination of HashSet and List for Ordering
+```
+  Set<Product> products = new HashSet<>();
+  products.add(new Product(42, "LG AC", 45000.00, "ELEC"));
+  products.add(new Product(89, "Sony Bravia", 245000.00, "TV"));
+
+  // collections are inter-operable
+  List<Product> prodList = new ArrayList<>(products); // valid
+  Collections.sort(prodList);
+```
+       
+
+
+
+
+
 
 
 
