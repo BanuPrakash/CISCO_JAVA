@@ -901,6 +901,15 @@ instead we use a combination of HashSet and List for Ordering
   Collections.sort(prodList);
 ```
        
+Map container stores the data in the form of key/value pair like Dictionary
+* HashMap
+* TreeMap
+* Hashtable [deprecated / old/ legacy/ same issues as Vector and Stack]
+
+Key has to be unique, values can be duplicated.
+
+Map produces Set of Keys and List of Values
+
 
 
 

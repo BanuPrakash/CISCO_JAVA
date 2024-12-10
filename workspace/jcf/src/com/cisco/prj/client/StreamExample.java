@@ -4,6 +4,7 @@ import com.cisco.prj.entity.Product;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -58,7 +59,15 @@ public class StreamExample {
                 .filter(p -> p.getCategory().equals("TV"))
                 .collect(Collectors.toList());
 
+        // key --> MOBILE / TV / ELEC
+        Map<String, List<Product>> prodMap = products
+                .stream()
+                .collect(Collectors.groupingBy(p -> p.getCategory()));
 
-
+        prodMap.forEach((key, value) -> {
+            System.out.println("Category : " + key);
+            //value.forEach(p -> System.out.println(p));
+            value.forEach(System.out::println); // method reference
+        });
     }
 }
