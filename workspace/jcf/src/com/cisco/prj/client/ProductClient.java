@@ -26,7 +26,14 @@ public class ProductClient {
         Arrays.sort(products, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
-                return (int)(o1.getPrice() - o2.getPrice());
+                // 54.5 - 54.1 ==> 0
+//                return (int)(o1.getPrice() - o2.getPrice());
+                if(o1.getPrice() > o2.getPrice()) {
+                    return  1;
+                } else if (o2.getPrice() > o1.getPrice()) {
+                    return  -1;
+                }
+                return  0;
             }
         }); // Comparator
 

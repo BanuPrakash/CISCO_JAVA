@@ -782,6 +782,66 @@ public interface Comparator<T> {
 ```
 
 
+Collection can be:
+1) List interface
+* ordered collection
+* can have duplicate elements
+* can be re-ordered [ sort , shuffle, reverse, ..]
+* can use index based operation [ add(obj, 3); remove(6); get(10), ...]
+* can grow or shrink
+
+Implementation classes:
+a) ArrayList
+b) LinkedList
+c) Legacy : Vector and Stack : not supposed to be used [ issues in this]
+d) 3rd party implementations like :VAVR, Apache Collections, ...
+https://vavr.io/
+https://commons.apache.org/proper/commons-collections/
+
+ArrayList:
+* like array it is contiguos memory
+* can grow or shrink
+* 99% of the time we use this
+
+LinkedList:
+* Doubly linked list
+* doesn't need contiguos memory
+* adding / removing from arbitrary position is more efficient
+Cons:
+* each node has 8 bytes extra memory occupied
+
+Generally we load paginated results on to memory, so ArrayList which uses contiguos memory is OK to use.
+
+Scenario 1:
+// not recommended --> not typesafe
+// ArrayList list = new ArrayList(); not advised, program to interface
+List list = new ArrayList();
+//List list = new LinkedList();
+list.add(new Mobile(..));
+list.add(new Date());
+list.add("Hello");
+
+we need to do type checking before we use
+
+if(list.get(0) instanceof Mobile) {
+    Mobile m = (Mobile) list.get(0);
+}
+
+Scenario 1: TypeSafe
+List<Integer> list = new ArrayList<Integer>(); 
+list.add(4);
+list.add(12);
+list.add("A"); // error
+
+int x = list.get(0); // no need to do typechecking
+
+2) Set
+3) Queue
+
+
+Collections are similar to Arrays utility class but can be used on List type of container instead of array.
+
+
 
 
 
