@@ -910,6 +910,21 @@ Key has to be unique, values can be duplicated.
 
 Map produces Set of Keys and List of Values
 
+===================
+
+Arrays are Co-variant
+Collections of JCF are not co-variant
+
+```
+Covariant simply means if X is subtype of Y then X[] will also be sub type of Y[]. Arrays are covariant As string is subtype of Object So
+
+String[] is subtype of Object[]
+
+Invariant simply means irrespective of X being subtype of Y or not ,
+
+ List<X> will not be subType of List<Y>.
+
+```
 
 
 
