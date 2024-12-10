@@ -32,7 +32,10 @@ public class ListExample {
 
         System.out.println("By Price");
 
+//        Collections.shuffle(products);
         Collections.sort(products, (p1, p2) -> Double.compare(p1.getPrice(), p2.getPrice())); // Comparator
+       // Collections.reverse(products);
+
         for(Product p : products) {
             System.out.println(p); // ordered
         }

@@ -841,6 +841,28 @@ int x = list.get(0); // no need to do typechecking
 
 Collections are similar to Arrays utility class but can be used on List type of container instead of array.
 
+=======
+
+Java 8 introduced streams.
+stream can be attached to collection / network / file system / database 
+Once stream is attached we can use the following High Order Functions 
+HOF: functions which accept functions as arguments; treat functions as first class member like primitive or object
+Commonly used HOF:
+* filter: to get subset based on predicate
+filter(predicateFn)
+* map: to transform the data
+map(transformFn)
+* forEach(actionFn)
+* reduce(aggregateFn)
+
+https://rxmarbles.com/
+
+Terminal functions are :forEach, reduce, collect
+Intermediary functions: filter, map, skip, limit, flatMap
+we can use n number of Intermediary functions in the chain in any order
+
+Note: data flows thro stream only if we have terminal function;
+
 
 
 
