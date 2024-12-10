@@ -518,8 +518,95 @@ If objects survive 3 rounds of Short-term GC --> objects need to be moved to old
 
 Why we don't use pointers in Virtual Machines / engines?
 
+=================
 
+Exception Handling and JCF
 
+Exception: any abnormal condition that arises during program execution
+
+In java exception is an object whic tells:
+1) What went wrong? [ ArithmeticExceptio ]
+2) Why? [ / by zero ]
+3) Where? [line ,method, class, ...]
+
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at UncheckedExample.doTask(UncheckedExample.java:10)
+	at UncheckedExample.main(UncheckedExample.java:4)
+
+Error type of exceptions: error type of exceptions are one which can't be handled; fix the bug and re-run the application
+Examples: OutOfMemoryError, StackOverflowError
+
+Exception type of exceptions: can be handled, can have alternate flow
+* Unchecked type of exceptions
+    These checked exceptions occur due to issues with JRE;
+    these exceptions are supposed to be handled with conditional statements
+    Compiler doesn't enforce you to handle that
+
+    Examples: ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException
+    ```
+    int data = 100;
+        int no = 0;
+        System.out.println(data / no); // ArithmeticException
+
+    Solution:
+    if(no != 0 ) {
+        System.out.println(data / no); 
+    }
+    Product p = null;
+    p.setPrice(3433); // NullPointerException
+
+    Solution:
+    if(p != null) {
+        p.setPrice(3433); 
+    }
+    int[] data = {5,1,11};
+    System.out.println(data[10]); // ArrayIndexOutOfBoundsException
+
+    Solution:
+    int index = 10;
+
+    if(index >= 0 && index < data.length) {
+        System.out.println(data[index]);
+    }
+
+```
+
+* Checked Type of exception
+these exceptions occur due to reasons outside of JRE; like database, OS, file, sockets, Threads, ...
+Compiler enforces you to handle these type of exceptions
+handling is done using try/catch/finally blocks
+
+Examples: IOException, SocketException, SQLException, ClassNotFoundException, InterruptedException, ...
+
+```
+ private static void doTask() {
+        System.out.println("doTask() called!!!");
+        // a.txt can exist or not
+        try {
+            FileInputStream fis = new FileInputStream("a.txt");
+            // other actions
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+```
+
+Exceptions are pushed up the call stack.
+
+```
+main() --> a() --> b() --> c()
+```
+
+If exception occurs in c(); it can be handled in c(); if not handled it is propaged/pushed to b();
+b() can delegate to a(); can be handled in a() or delegate to main();
+if main() doesn't handle it hands it over to DefaultHandler provided for the thread.
+If exception is handed over to the DefaultHandler; DefaultHandler prints the error and program terminates
+
+===
+
+In case of Checked type of exception; we need "throws" keyword to specify that exception is propagated up the call chain.
+
+"throw" keyword --> pending
 
 
 
