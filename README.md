@@ -501,6 +501,27 @@ classes are created on the fly within JRE; once object is created of that class,
 
 If interface has only one method to implement; its called FunctionalInterface; for such interfaces we can use lambda expressions instead of anonymous class approach.
 
+===================================
+
+Introduction to Garbage Collector [GC]
+* Any code which works on Virtual Machines / engines it comes with GC; like JavaScript / Java / C# 
+* We allocate memory; but don't explictly release them;
+* GC is resposible for releasing memory
+
+HEAP
+
+* GC is a low priority thread
+GC can be Short term GC {Scaveger} / Full term GC
+Short term GC  is responsible to manage / clear un-referenced objects in Eden Area
+If objects survive 3 rounds of Short-term GC --> objects need to be moved to old generation
+*  long term GC runs for every 3 rounds of Short-term GC; it is responsible for Old Generation
+
+Why we don't use pointers in Virtual Machines / engines?
+
+
+
+
+
 
 
 
