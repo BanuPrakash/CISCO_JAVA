@@ -496,6 +496,14 @@ Class.forName("fully-qualified-class-name").getConstructor().newInstance();
 * Interface Segreggation
 * interfaces for OCP
 
+Anonymous classes can be created from interface or abstract classes
+classes are created on the fly within JRE; once object is created of that class, classdata can be removed from metaspace
+
+If interface has only one method to implement; its called FunctionalInterface; for such interfaces we can use lambda expressions instead of anonymous class approach.
+
+
+
+
 
 
 
