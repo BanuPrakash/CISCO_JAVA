@@ -454,7 +454,6 @@ properties file is a key/value pair
 MOBILE_DAO=com.cisco.prj.dao.MobileDaoDbImpl
 
 
-====
 
 Creating an Object:
 1) if we know class name 
@@ -464,3 +463,47 @@ new Mobile()
 str = "com.cisco.prj.entity.Tv"
 
 Class.forName(str).newInstance();
+
+=========================================
+
+Day 2
+
+Recap:
+SOLID 
+JRE: JVM, Metaspace, Stack, Heap.
+Implict "this" reference passed as first argument to instance methods only and not to static methods
+instance variables vs static/class variable
+constructor, super, static block
+
+Generalization and Specialization relationship --> IS A --> Inheritance --> extends
+* Java doesn't support multiple inheritance
+* every class inherits java.lang.Object
+abstract class and abstract methods
+
+Realization Relationship: implements 
+Factory Methods for decoupling
+
+Reflection API:
+anyObject.getClass().getMethod(); // gets all the methods including inherited methods of the class for a given object.
+method.invoke(object); // if method name is dynamic
+
+// we can create object of a class if we don't know the name is advance
+Class.forName("fully-qualified-class-name").getConstructor().newInstance();
+
+====================================================================
+
+* Realization Relationship vs Generalization and Specialization
+* Interface Segreggation
+* interfaces for OCP
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,8 +1,10 @@
 package com.cisco.prj.entity;
 
+import com.cisco.prj.util.IComparable;
+
 // implicitly inherits from java.lang.Object
 // remember Liskov Substitution Principle
-public abstract class Product {
+public abstract class Product implements IComparable {
     private  int id;
     private String name;
     private double price;
@@ -47,4 +49,19 @@ public abstract class Product {
 
     // like pure virtual function
     public abstract boolean isExpensive();
+
+    @Override
+    public int compare(Object other) {
+        Product p = (Product) other;
+        return (int) (this.price - p.price);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
