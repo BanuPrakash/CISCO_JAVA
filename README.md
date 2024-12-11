@@ -1198,7 +1198,25 @@ protected resource.
 
 Interthread communication --> wait(); notify() ; notifyAll()
 
+========
 
+wait() vs sleep()
+
+sleep() --> Idle State --> here lock is not released
+wait() --> wait state --> here lock is released.
+
+calling wait() from non-synchronized method/ block throws IllegalMonitorStateException
+Monitor --> Lock 
+
+notify() --> makes one of the thread in wait-state to Runnable --> No fairness involved
+notifyAll() --> makes all the threads in wait-state to Runnable.
+
+===================
+
+Producer
+
+
+Consumer
 
 
 
