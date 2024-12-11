@@ -1154,6 +1154,18 @@ Thread Group: main
 By default 2 groups: main and system 
 GC, SignalDispatcher, ReferenceHandler --> System group 
 
+Pink vs Green Threads:
+In the context of computer programming, "pink threads" is not a commonly used term, 
+while "green threads" refer to a type of thread managed by a virtual machine (VM) 
+instead of directly by the operating system, 
+essentially meaning they are lightweight threads scheduled at the application level 
+rather than the kernel level; 
+making them faster to create but potentially less efficient for CPU-intensive 
+tasks compared to native OS threads.
+
+=====
+
+
 
 
 
