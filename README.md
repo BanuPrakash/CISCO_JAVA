@@ -1190,7 +1190,11 @@ AtomicInteger, AtomicLong are atomic variable --> can be marked as volatile
 
 ===========
 
+Whenever an object is created, in the heap area along the state in ther header a "LOCK" is avaailable.
+Make use of this lock to avoid data corruption.
 
+keyword "synchronized" to mark a protected resource; enforce thred to acquiring lock before entering a 
+protected resource.
 
 
 
