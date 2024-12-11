@@ -1249,8 +1249,28 @@ synchronized b() {
 
 ```
 
+synchronized Block:
+```
+public class BankingService {
+    public  void transferFunds(Account fromAcc, Account toAcc, double amt) {
+        synchronized(fromAcc) { // lock fromAcc
+            synchronized(toAcc) { // lock toAcc
+                fromAcc.withdraw(amt);
+                toAcc.deposit(amt);
+            } // unlock toAcc
+        } // unlock fromAcc
+    }
+}
 
+DeadLock:
+T1 --> SB101 to SB410 , 5000
+T2 --> SB410 to SB101 , 4000
 
+synchronized(fromAcc) { T1 acquires SB101 and T2 acquires SB410
+
+synchronized(toAcc) { T1 wants SB410 and T2 wants SB101
+
+```
 
 
 
