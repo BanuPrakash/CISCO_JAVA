@@ -1213,15 +1213,41 @@ notifyAll() --> makes all the threads in wait-state to Runnable.
 
 ===================
 
-Producer
+Doug Lea introduced many APIs in Java version 5 to overcome issues with Java Threads.
 
+Java Threads Issues:
+1) Thread  / Runnable doesn't return back a value
+2) Starting and stopping threads --> latency issue; Thread pool 
+3) Object has only one lock 
+4) Many a times it gets into deadlock situation
+5) Only owner of lock can release it. It would have been good, ADMIN can release a lock,..
 
-Consumer
+Object has only one lock :
+```
+public class Account {
+    private double balance;
+    private UserProfile userProfile;
+    ...
+}
+```
+If any tx is happening no thread can change UserProfile also.
+or UserProfile is getting modified, we can't have tx.
 
+Good to have balanceLock and profileLock separate. 
 
+ReentrantLock, ReadWriteLock
 
+```
+Thread acquires lock for a(); same lock is used for execute b();
+synchronized a() {
+    b();
+}
 
+synchronized b() {
+    
+}
 
+```
 
 
 
