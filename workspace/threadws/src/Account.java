@@ -25,6 +25,14 @@ public class Account {
 
     public synchronized  void withdraw(String name, double amt) {
         System.out.println(name + " is trying to withdraw " + amt);
+        while(getBalance() < amt) {
+            System.out.println("Insufficient balance !!!" + getBalance());
+            try {
+                wait(15000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
         double bal = getBalance();
         System.out.println(name  + " got existing balance : " + bal);
         bal -= amt;
@@ -41,6 +49,7 @@ public class Account {
         System.out.println(name + " setting the balance...");
         setBalance(bal);
         System.out.println(name +" sets balance to : " + bal);
+        notifyAll(); // notify threads which are in wait-state
     }
 
 }

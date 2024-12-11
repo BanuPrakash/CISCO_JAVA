@@ -6,11 +6,17 @@ public class AccountClient {
         TransactionThread t2 =
                 new TransactionThread(account, "\tRoger", TransactionType.CREDIT, 2500);
         TransactionThread t3 =
-                new TransactionThread(account, "\t\tPeter", TransactionType.DEBIT, 2000);
+                new TransactionThread(account, "\t\tPeter", TransactionType.DEBIT, 6000);
 
+        t3.start();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         t1.start();
         t2.start();
-        t3.start();
+
         // Barrier, join() makes the thread wait for the other thread to finish
         try {
             t1.join(); // main waits for t1 to complete

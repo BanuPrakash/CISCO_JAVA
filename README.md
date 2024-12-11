@@ -1196,6 +1196,8 @@ Make use of this lock to avoid data corruption.
 keyword "synchronized" to mark a protected resource; enforce thred to acquiring lock before entering a 
 protected resource.
 
+Interthread communication --> wait(); notify() ; notifyAll()
+
 
 
 
