@@ -1221,6 +1221,7 @@ Java Threads Issues:
 3) Object has only one lock 
 4) Many a times it gets into deadlock situation
 5) Only owner of lock can release it. It would have been good, ADMIN can release a lock,..
+6) No timeout for wait period of lock acquire 
 
 Object has only one lock :
 ```
@@ -1271,6 +1272,32 @@ synchronized(fromAcc) { T1 acquires SB101 and T2 acquires SB410
 synchronized(toAcc) { T1 wants SB410 and T2 wants SB101
 
 ```
+
+Solution with Doug Lea:
+
+```
+public class BankingService {
+    public  void transferFunds(Account fromAcc, Account toAcc, double amt) { 
+        try {
+             if(fromAcc.balanceLock.tryLock(1, TimeUnit.SECOND)) {
+                try {
+                    if(toAcc.balanceLock.tryLock(1, TimeUnit.SECOND)) {
+                         fromAcc.withdraw(amt);
+                         toAcc.deposit(amt);
+                    }
+                } finally {
+                    toAcc.balanceLock.unlock();
+                }
+             }
+        } finally {
+            fromAcc.balanceLock.unlock();
+        }
+       
+    }
+}
+
+```
+
 
 
 

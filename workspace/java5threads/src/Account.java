@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Account {
     private double balance;
     private Lock balanceLock = new ReentrantLock();
-
+    balanceLock
     public Account(double balance) {
         this.balance = balance;
     }
