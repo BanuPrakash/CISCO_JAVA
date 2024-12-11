@@ -926,11 +926,126 @@ Invariant simply means irrespective of X being subtype of Y or not ,
 
 ```
 
+Annotation / Threads / Database 
 
+=============================
 
+Day 3
 
+Recap:
+* Exception Handling
+* Java Collection Framework
+Prefer Set for Association
+```
+    public class Customer {
+        email, firstName, lastName, ..
+        private Set<Order> order  new LinkedHashSet(); // associated
+    }
+    public class Order {
+        id, order_date, total
+        private Set<LineItem> items = new LinkedHashSet(); // associated
+    }
 
+    public class LineItem {
+        id 
+        product 
+        amount
+        quantity
+    }
 
+```
+
+LinkedHashSet: uses hashCode() and equals() for duplicate identification, 
+but it is ordered like List
+
+===================================================
+
+Annotation: metadata ==> @annotationName
+Example: @Override
+
+* Who is using it?
+1) COMPILER
+2) ClassLoader
+3) Runtime
+
+* Where can I use it?
+1) TYPE: class / interface / Annotation / Enum
+2) method
+3) field 
+4) parameters
+
+@Override is method level annotation and used by Compiler
+Compiler checks the method signature in the parent class; 
+if signature matches it compiles else doesn't compile
+
+After compilation the bytecode won't have @Override metadata
+
+```
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.SOURCE)
+public @interface Override {
+}
+```
+
+Custom Annotation Example:
+```
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.CLASS)
+public @interface WebOS {
+}
+
+@WebOS
+public class PubG extends Game {
+    ...
+}
+
+Compiler compiles and creates a bytecode. Compiler is not intreseted in the metadata.
+metadata is kept in bytecode
+
+We need to customize the ClassLoader
+
+loadClass() {
+    here check the metadata and decide to allow the PubG to be loaded or not.
+}
+```
+
+Let's create few annotations to simulate ORM concept
+Object Relational Mapping
+Object <---> relataional database Tables
+Annotation will help in generated DDL and DML statements.
+
+```
+@Table(name="tbook")
+public class Book {
+
+    @Column(name="BOOK_ID", type="NUMERIC(12)")
+    public int getId() {
+
+    }
+
+    @Column(name="TITLE")
+    public String getName() {
+
+    }
+}
+```
+
+Annotations can have properties. No state and behaviour
+
+@Table(name="tbook"); name is a property 
+
+x = name(); // getter
+name="tbook"; // setter
+
+===========
+
+String is immutable; prefer StringBuilder or StringBuffer for mutation 
+
+String s = "Hello";
+
+s += " World";
+
+s += " 123";
 
 
 

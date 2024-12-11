@@ -1,5 +1,7 @@
 package com.cisco.prj.entity;
 
+import java.util.function.Predicate;
+
 // Mobile inherits Product
 // state and behaviour are inherited
 // constructors are not inherited
