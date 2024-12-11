@@ -1037,15 +1037,44 @@ Annotations can have properties. No state and behaviour
 x = name(); // getter
 name="tbook"; // setter
 
-===========
+ORM Frameworks: Hibernate, toplink, KODO, OpenJPA, EclipseLink, ...
+============================
 
-String is immutable; prefer StringBuilder or StringBuffer for mutation 
+Java Concurrency : Multithreaded applications
 
-String s = "Hello";
+Process: Program in execution; every process needs a unit of work --> Thread
 
-s += " World";
+Single Threaded application: there is only one unit of work --> Main Thread 
+Notepad, Calculator, Settings, ..
 
-s += " 123";
+From java's perspective we have a Stack for main thread 
+
+Multithreaded application: there can be multiple units of work executing conucrrently are 
+time-slicing given to them
+Examples: IntelliJ, Word, Browsers, ...
+
+From java's perspective we have a Stack for main thread, and stacks for each of the thread.
+
+In Word application:
+we have main thread --> typing
+spellcheck --> thread
+grammercheck --> thread
+auto-saving --> thread 
+
+Why do we need Multithreaded application?
+* Avoid starvation
+* Sharing resources
+word document before saving to Disk will be in HEAP area; 
+the same document is used for editing, spell check, grammer check
+Thread are light-weight process 
+* Decoupling logic 
+In Scenario where exception occurs in spellcheck thread; only that thread dies; 
+other thread continues it's execution
+
+=============================
+
+Resume @ 11:20
+
 
 
 
