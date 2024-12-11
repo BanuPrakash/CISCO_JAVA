@@ -11,7 +11,7 @@ public class ThreadExample {
         Thread t3 = new Thread(ct);
         t3.setName("CHAR THREAD");
         t3.setPriority(9);
-        
+
         t1.start(); // main, t1 are eligible --> ready
         t2.start(); // main, t1, t2 are eligible --> ready
         t3.start();

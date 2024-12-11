@@ -1165,6 +1165,33 @@ tasks compared to native OS threads.
 
 =====
 
+Thread Safety
+* A member is said to be thread safe if it doesn't get corrupted in multi-threaded environment 
+
+local variable --> Stack --> Each thread has a separate stack --> Thread safe
+instance variable --> HEAP --> all threads share heap --> Not Thread Safe 
+Account account = new Account(5000);
+static variable -> Metaspace --> shared by all threads --> Not Thread Safe 
+
+Immutable objects --> Thread Safe -- reside on HEAP 
+Volatile variables are Thread safe --> reside on HEAP 
+volatile --> marker to specific that the member should not be optimized
+
+Only Atomic members can be marked as volatile; boolean are Atomic;
+int, double, .. are not Atomic;
+
+int x  = 4;
+x++;
+move 32 bits to left
+x--;
+move 32 bits to right...
+
+AtomicInteger, AtomicLong are atomic variable --> can be marked as volatile
+
+====
+
+
+
 
 
 

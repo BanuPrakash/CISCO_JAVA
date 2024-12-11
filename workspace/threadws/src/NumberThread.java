@@ -1,3 +1,5 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class NumberThread extends Thread{
     private int begin;
     private int end;
@@ -14,4 +16,5 @@ public class NumberThread extends Thread{
             System.out.println(t + " : " + i);
         }
     }
+    
 }
