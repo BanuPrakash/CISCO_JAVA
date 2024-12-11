@@ -1072,8 +1072,95 @@ In Scenario where exception occurs in spellcheck thread; only that thread dies;
 other thread continues it's execution
 
 =============================
+Main Thread; main() method is an entry point;
+Entry point for every other thread is run(); 
+this is the method which will be pushed on to the stack
+```
+    interface Runnable {
+        void run();
+    }
 
-Resume @ 11:20
+ // Capable to run part of the code conucrrently ==> HAS A
+    class SpellCheck implements Runnable {
+        ...
+        public void run() {
+            ..
+        }
+    }
+```
+
+Thread class: to control life-cycle of thread
+* start() -> start0()
+
+* stop() deprecated 
+* sleep(long ms)
+* yield()
+* interrupt()
+* join()
+* suspend() deprecated
+* resume() deprecated
+
+```
+
+public class Thread implements Runnable {
+    default run() method ..
+}
+
+// IS A
+class SpellCheckThread extends Thread {
+    public void run() {
+
+    }
+}
+
+class GrammerCheckThread extends Thread {
+    public void run() {
+        
+    }
+}
+```
+SpellCheckThread t1 = new SpellCheckThread();
+GrammerCheckThread t2 = new GrammerCheckThread();
+
+Dead state
+
+Exceptions are not handled
+and propagated to 
+DefaultHandler
+============================
+
+JRE waits for the last Non-Daemon thread to finish it's execution before it terminates.
+By default all threads created from main() are non-daemon 
+
+JRE doesn't wait for Daemon threads to finish it's execution.
+Daemon threads: helper threads which shouldn't contain main logic ; 
+update time every 1 second in gaming application
+
+```
+class TimerThread extends Thread {
+    public void run() {
+        while(true) {
+            Thread.sleep(1000);
+            update time on Console
+        }
+    }
+}
+```
+
+Thread[Thread-0,5,main]
+Name ofthe Thread: Thread-0
+priority: 5 [ 1 - 10]
+Thread Group: main 
+By default 2 groups: main and system 
+GC, SignalDispatcher, ReferenceHandler --> System group 
+
+
+
+
+
+
+
+
 
 
 
