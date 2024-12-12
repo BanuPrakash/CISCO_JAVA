@@ -1542,7 +1542,11 @@ public class Mobile extends Product {
 
 ```
 
+Whenever exceptions are propagated; wrap the orinigal exception:
+  throw new PersistenceException("unable to add product", e);
 
+
+use e.printStackTrace(); only in development stage; not in production
 
 
 
