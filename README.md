@@ -1370,9 +1370,50 @@ and allOf() that make it easy to compose multiple asynchronous operations and
 to handle their results in a non-blocking way.
 
 ForkJoinPool
+===================
+
+Docker Desktop
+Maven and JDBC -> MySQL database 
+
+Docker: Virtualization using Linux platform
+Image: Softwares
+containers: RUNNING the application download as image
 
 
+docker run -p 3306:3306 -d --name local-mysql -e MYSQL_ROOT_PASSWORD=Welcome123 mysql
 
+image: mysql
+container name: local-mysql
+-e : Environment
+-p: expose the port
+ 
+-p 1234:3306
+
+on docker application is running on 3306 and exposed as 1234
+
+=======
+Get Bash terminal to the container:
+
+```
+docker exec -it local-mysql bash 
+
+# mysql -u root -p
+Enter password:  Welcome123
+mysql> create database JAVA_CISCO;
+mysql> use JAVA_CISCO;
+mysql> create table products(id int PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), price double);
+mysql> insert into products values(0, 'iPhone 15', 89000.00);
+mysql> insert into products values(0, 'Samsung Fold', 145000.00);
+
+mysql> select * from products;
++----+--------------+--------+
+| id | name         | price  |
++----+--------------+--------+
+|  1 | iPhone 15    |  89000 |
+|  2 | Samsung Fold | 145000 |
++----+--------------+--------+
+
+```
 
 
 
