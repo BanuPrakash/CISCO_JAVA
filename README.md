@@ -1504,6 +1504,48 @@ finally block is a compulsory execute code; executes if exception occurs or not.
 
 =============================
 
+final keyword:
+```
+1) to declare a constant
+final int x = 10;
+x++; // error 
+
+2) to declare a constant pointer;
+final Product p = new Product();
+p.setPrice(999); // valid 
+
+p = new Product(); // error 
+
+3) to prevent inheritance 
+
+public final class Tv extends Product {
+
+}
+
+public class SmartTv extends Tv { // error 
+
+4) to prevent override 
+
+public class Product {
+    public final double getPrice() {
+        ..
+    }
+}
+
+public class Mobile extends Product {
+    ...
+    @Override
+    public  double getPrice() { // error
+        ..
+    }
+}
+
+```
+
+
+
+
+
 
 
 
