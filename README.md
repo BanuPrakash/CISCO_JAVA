@@ -1548,6 +1548,39 @@ Whenever exceptions are propagated; wrap the orinigal exception:
 
 use e.printStackTrace(); only in development stage; not in production
 
+```
+mysql> create table customers (email varchar(100) PRIMARY KEY, first_name varchar(100));
+
+
+mysql> insert into customers values ('raj@cisco.com','Rajesh');
+
+
+mysql> insert into customers values ('rani@cisco.com','Rani');
+
+
+
+CREATE TABLE orders (
+    oid int NOT NULL PRIMARY KEY  AUTO_INCREMENT,
+    order_date TIMESTAMP,
+    total double,
+    customer_fk varchar(100),
+    FOREIGN KEY (customer_fk) REFERENCES customers(email)
+);
+
+
+CREATE TABLE items (
+    item_id int PRIMARY KEY  AUTO_INCREMENT,
+    order_fk int NOT NULL,
+    product_fk int NOT NULL,
+    quantity int,
+    amount double,
+    FOREIGN KEY (order_fk) REFERENCES orders(oid),
+    FOREIGN KEY (product_fk) REFERENCES products(id)
+);
+
+alter table products add column qty int;
+update products set qty = 100 where 1=1;
+```
 
 
 
