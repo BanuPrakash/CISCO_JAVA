@@ -1414,6 +1414,33 @@ mysql> select * from products;
 +----+--------------+--------+
 
 ```
+jar --> Java Archive
+
+Java Build tools : Maven / Gradle 
+Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM)
+* Manage Dependencies
+Without maven i can download the libraries available in the for "jar" on to my machine and configure to be used in project.
+* Transative Dependencies: a12.jar --> b52.jar --> c51.jar 
+* Standard File structure which helps my projects to be imported into any IDEs
+* helps execute goals; compile , testing, build 
+
+
+pom.xml
+JAR file is identified using all the below combination
+https://mvnrepository.com/
+
+<dependency>
+    <groupId>com.uber</groupId>
+    <artifactId>payment</artifactId>
+    <version>1.18</version>
+</dependency>
+
+File --> New Project --> Java and Maven
+
+
+
+
+
 
 
 
