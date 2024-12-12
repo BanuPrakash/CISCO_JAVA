@@ -1313,9 +1313,66 @@ public interface Callable<V> {
 
 ```
 
-Future
+Day 4
 
-Maven and JDBC
+Recap:
+Annotation: metadata which can be used by Compiler, ClassLoader or Runtime
+Java Reflection API can't access private members, hence we didn't use Field level annotation.
+
+Method[] methods = class.getDeclaredMethods(); // public 
+
+@Column
+private String title;
+
+Java Reflection API can't access this metadata;
+
+Frameworks like Spring / Hibernate, ... will use different bytecode instrumentation libraries to aaccess
+private members like bytebuddy, JavaAssist, CGLib...
+
+Java Concurrency:
+Runnable, Thread class, life-cycle of thread.
+Thread Safety, synchronized keyword at method level and block level
+wait() is an method of Object which can be used to make thread go to wait state by releasing the lock
+notify(); notifyAll(); to inform the threads in wait state that state has changed and it need not be in wait state; make it Runnable
+
+join(); barrier --> caller thread has to wait for other thread to finish it's execution.
+
+Doug Lea: Lock Api, Exector, ExecutorService , Callable and Future. 
+
+====================================
+
+Future vs CompletableFuture
+
+Future and CompletableFuture are both abstractions for representing a result that will be available in the future,
+CompletableFuture extends CompletionStage.
+
+Using CompletableFuture we can change actions
+task1() --> task2() --> task3() --->
+
+With Future, it is difficult to chain multiple asynchronous operations together 
+or to combine the results of multiple operations. 
+
+result1 = future1.get(); //blocking code
+
+Future f2 = executorService.submit(new SecondTask(result1));
+
+result2 = f2.get();
+
+With a Future object, you must call the get() method to retrieve the result, 
+but this method blocks until the result is available. 
+In contrast, with a CompletableFuture object, 
+you can use various non-blocking methods to retrieve the result, 
+such as thenApply(), thenAccept(), or join()
+
+
+CompletableFuture, on the other hand, provides methods such as thenCompose(), thenCombine(), 
+and allOf() that make it easy to compose multiple asynchronous operations and 
+to handle their results in a non-blocking way.
+
+ForkJoinPool
+
+
+
 
 
 
