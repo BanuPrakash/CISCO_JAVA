@@ -11,7 +11,7 @@ public class ItemDaoJdbcImpl implements  ItemDao{
     public void addItem(LineItem item, Connection con) throws PersistenceException {
         final String SQL = "INSERT INTO items " +
                 "(item_id, order_fk, product_fk, quantity, amount) " +
-                " VALUES (0, ?, ?, ?, ?, ?)";
+                " VALUES (0, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, item.getOrder().getOid());
