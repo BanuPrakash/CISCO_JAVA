@@ -1437,6 +1437,83 @@ https://mvnrepository.com/
 
 File --> New Project --> Java and Maven
 
+============
+
+Java <---> MySQL
+
+JDBC: Java Database Connectivity --> Integration Library to interact with RDBMS
+
+Java <---> JDBC <----> RDBMS
+
+JDBC libraries provides interfaces; implementation classes are provided by database vendors
+
+Steps:
+1) Load database vendors provided Drivers one time for project; static block
+Class.forName("com.mysql.cj.jdbc.Driver");
+Class.forName("org.oracle.Driver");
+
+2) Establish a database Connectivity
+DriverManager is a Factory method;
+depending on URL it creates MySQLConnection / OracleConnection ..
+Connection is an interface 
+Connection con = DriverManager.getConnection(URL, USER, PWD);
+
+URL:
+jdbc:mysql://localhost:3306/JAVA_CISCO
+jdbc:oracle:thin:@localhost:1521@JAVA_CISCO
+
+3) Send SQL statements
+3.1) Statement
+use this if it's the same SQL for every request
+select * from employees
+3.2) PreparedStatement 
+use this if SQL uses IN parameters [ parameters comming as request]
+select * from employees where id = ?
+insert into employees values (?, ? , ?)
+
+Don't use SQL concatination and use Statement to form SQL;
+SQLInjection
+String query = "SELECT * FROM accounts WHERE custID='" + request.getParameter("id") + "'";
+the attacker modifies the ‘id’ parameter value in their browser to send: ' UNION SLEEP(10);--.
+
+3.3) CallableStatement
+use this to invoke stored procedure/functions of RDBMS 
+for secure application
+
+```
+CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+AS
+SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
+// triggers
+GO;
+
+Java:
+call(SelectAllCustomers('DELHI', '1245011'));
+
+```
+
+int executeUpdate(SQL); // insert, delete and Update SQL ; return value indicates how many rows are affected
+// return value of 0 --> no matching criteria; -1 indicates issue with SQL 
+ResultSet executeQuery(SQL); // select 
+
+ResultSetMetadata --> use this to get metadata of ResultSet; like number Columns; data type of columns..
+
+4) Always release resources in finally block; 
+like closing database Connection; close socket Connection; file close;
+finally block is a compulsory execute code; executes if exception occurs or not. 
+
+=============================
+
+
+
+
+
+
+
+
+
+
+
 
 
 
