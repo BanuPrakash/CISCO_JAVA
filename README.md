@@ -1583,16 +1583,148 @@ update products set qty = 100 where 1=1;
 ```
 
 
+=============
+
+Day 5
+
+Recap:
+JDBC --> Integration library to connect ot database
+DriverManager -> getConnection() which is used to connect to database; we don't use this in enterprise application; instead we use DataSource [pool of database connection]
+
+Problem with DriverManager -> getConnection(); latency in establishing connection and closing connection; another issue with this is we can't have limited connections
+* Statement
+* PreparedStatement
+* ResultSet 
+* Begin Transaction con.setAutoCommit(false)
+* end transaction con.commit() or con.rollback()
+
+==================
+
+Upgrade the application to Web application;
+
+WebServer: works on HTTP protocol using Request/Response programming model; web servers can serve static resources [ html/ pdf/ images/ css / js]
+If server needs to send dynamic content then WebServer needs to have engines/web container configured
+ServletContainer : web container or engine to serve dynamic content using Java Technology
+PHP, .NET , NODEJS, ...
+
+Eclipse Jetty/ Apache Tomcat is a Java web server and Java Servlet container.
+
+Code running within Servlet Container has to be a Servlet API
+```
+interface Servlet{}
+
+class GenericServlet implements Servlet {}
+
+class HttpServlet extends GenericServlet {}
+
+As a programmer we need to implement Servlet or extend GenericServlet or extend HttpServlet and customize
+
+Example:
+public class ProductServlet extends HttpServlet{
+    ...
+}
+
+METHOD of Requests can be:
+GET --> READ [Address bar / hyperlinks are by default GET request]
+POST --> CREATE
+PUT/ PATCH --> UPDATE
+DELETE --> DELETE
 
 
+Thread Pool
+
+GET http://abc.com:8080/products
 
 
+HttpServletRequest object: encapaulates all information comming from client; like data entered in form / browser / OS
+
+HttpServletResponse object can be used to write data back to client.
+
+Once Response is sent back to client HttpServletRequest object and HttpServletResponse object are destroyed;
+
+Servlet Containers are managing the life of objects; Servlet , Request, Response
+We don't do new ProductServlet();
+Servlet Containers are working like IoC --> Inversion Of Control --> for Dependency Injection; they inject objects like request and response to Servlet
+
+```
+Deployment Descriptor: Configurations to servlet container / engine / web container
+
+web.xml file is a deployment descriptor / one per one web application
+
+Part 1: use the below data to create instances of Servlet
+```
+<servlet>
+    <servlet-name> One </servle-name>
+    <servlet-class> pkg.ProductServlet </servlet-class>
+</servlet>
+<servlet>
+    <servlet-name> Two </servle-name>
+    <servlet-class> pkg.CustomerServlet </servlet-class>
+</servlet>
+
+```
+
+Part 2: Do the mapping
+
+```
+    <servlet-mapping>
+         <servlet-name> One </servle-name>
+         <url-pattern> /products </url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+         <servlet-name> Two </servle-name>
+         <url-pattern> /customers </url-pattern>
+    </servlet-mapping>
+```
 
 
+Alternatively we can use annotation:
 
+```
+@WebServlet("/products")
+public class ProductServlet extends HttpServlet{
+    ...
+}
+```
 
+Deploying the code on Web Container / Servlet Container / Servlet engine:
+We need a "war" file; Web Archive
 
+folder structure of war file:
+```
+    databaseapp
+        |
+        static files [ html / css / js]
+        |
+        WEB-INF
+            |
+            web.xml
+            |
+            classes
+                |
+                pkg
+                    |
+                    ProductServlet.class
+                    OrderServlet.class
+                    CustomerServlet.class
 
+```
+
+war can be deployed on web container
+place the war in "apache-tomcat-10.1.10/webapps" or in jetty /jboss/weblogic/wepshere/glassfish
+
+Maven Goals:
+maven-compiler-plugin
+mvn compile
+
+maven-war-plugin
+mvn package
+
+embedded JETTY server can be executed by Maven itself
+mvn clean
+mvn jetty:run
+ --> mvn package
+  --> mvn compile
 
 
 
