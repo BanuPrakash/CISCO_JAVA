@@ -1729,7 +1729,29 @@ mvn jetty:run
 ========
 
 Maven --> Execute Goals
-mvn jetty:run
+mvn jetty:run  for 8080 
+http://localhost:8080/products
+
+OR
+mvn jetty:run -Djetty.port=9999
+http://localhost:9999/products
+
+
+
+File Project Structure --> Modules --> database/Web
+
+Web Resource Directory +
+
+we should be able to get "webapp" folder
+
+database/src/main/webapp folder ==> this is the place where static resources like html / css /js / jsp pages should reside
+
+database/src/main/webapp/index.html ==> landing page
+```
+http://localhost:8080/
+  <a href="products">List Products</a> ==> ProductServlet
+  <a href="productForm.html">Add a Product</a> ==> static resource productForm.html
+```
 
 
 
