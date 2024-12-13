@@ -1728,6 +1728,8 @@ mvn jetty:run
 
 ========
 
+Maven --> Execute Goals
+mvn jetty:run
 
 
 
